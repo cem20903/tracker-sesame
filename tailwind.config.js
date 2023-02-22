@@ -4,9 +4,15 @@ module.exports = {
   theme: {
     colors: {
     'green': '#5EBEA3',
+    'grey-extra-light': '#F4F4F4',
     'grey-light': '#B5B5B5',
     'grey-dark': '#3F3F3F',
-    'salmon': '#FF9984'
+    'salmon': '#FF9984',
+    'white': '#FFFFFF'
+    },
+    fontSize: {
+      'small': '12px',
+      'medium': '15px'
     },
     extend: {},
   },
