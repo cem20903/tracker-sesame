@@ -2,10 +2,10 @@
   <div class="bg-grey-light flex justify-around items-center w-[408px] p-[8px] rounded-[12px]">
     <p class="text-grey-dark text-small">04:01:56</p>
     <Button type="primary">Entrar</Button>
-    <p>|</p>
+    <p class="text-grey-light-1">|</p>
     <img src="../assets/avatar.png">
     <p class="text-medium text-grey-dark">Kelly pierce</p>
-    <div>></div>
+    <img src="../assets/chevron-left.svg" >
   </div>
 </template>
 
