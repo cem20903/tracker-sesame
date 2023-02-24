@@ -16,6 +16,7 @@
 import Button from './Button.vue'
 import { clockOut } from '../services/API'
 import { mapState, mapActions } from 'vuex'
+import { formatTime } from '../utils/calculateDifferenceBetweenTwoDates'
 
 export default {
   name: 'Tracker-Online',
@@ -39,31 +40,8 @@ export default {
   computed: {
     ...mapState(['worker', 'timeWorker']),
     currentTimeWorking () {
-      
-      let formatSeconds
-      let formatMinutes
-      let formatHours
-    
-      if(this.currentSeconds < 10) {
-        formatSeconds = `0${this.currentSeconds}`
-      } else {
-        formatSeconds = this.currentSeconds
-      }
-      
-      if(this.currentMinutes < 10) {
-        formatMinutes = `0${this.currentMinutes}`
-      } else {
-        formatMinutes = this.currentMinutes
-      }
-      
-      if(this.currentHours < 10) {
-        formatHours = `0${this.currentHours}`
-      } else {
-        formatHours = this.currentHours
-      }
-      
-      
-      return `${formatHours}:${formatMinutes}:${formatSeconds}`
+      const dateFormated = formatTime({ hours: this.currentHours, minutes: this.currentMinutes, seconds: this.currentSeconds})
+      return dateFormated
     }
   },
   created() {

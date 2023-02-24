@@ -31,7 +31,4 @@ function formatTime ({ hours, minutes, seconds}) {
   return `${hoursFormated}:${minutesFormated}:${secondsFormated}`
 }
 
-
-
-
 export { calculateDifferenteBetweenTwoDates, formatTime }
