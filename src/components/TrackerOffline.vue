@@ -11,7 +11,7 @@
 
 <script>
 
-import { mapState } from 'vuex'
+import { mapActions, mapState } from 'vuex'
 import Button from './Button.vue'
 import { clockIn } from '../services/API'
 
@@ -22,9 +22,12 @@ export default {
     Button
   },
   methods: {
+   ...mapActions(['getWorkerInfo']),
     async clickOnClockIn () {  
-      await clockIn({ employeeId: 'b99a6cd9-3a3d-4635-9eea-e089c90ac45a'}) 
+      await clockIn({ employeeId: this.worker.id }) 
+      this.getWorkerInfo()
     }
+    
   },
   computed: {
     ...mapState(['worker', 'timeWorker']),

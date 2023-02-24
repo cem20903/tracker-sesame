@@ -15,7 +15,7 @@
 
 import Button from './Button.vue'
 import { clockOut } from '../services/API'
-import { mapState } from 'vuex'
+import { mapState, mapActions } from 'vuex'
 
 export default {
   name: 'Tracker-Online',
@@ -30,8 +30,10 @@ export default {
     }
   },
   methods: {
+    ...mapActions(['getWorkerInfo']),
     async clickOnClockOut () {
       await clockOut({ employeeId: this.worker.id })
+      this.getWorkerInfo()
     },
   },
   computed: {
