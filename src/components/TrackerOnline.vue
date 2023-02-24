@@ -1,7 +1,7 @@
 <template>
   <div>
   <div class="bg-grey-light flex justify-around items-center w-[596px] p-[8px] rounded-[12px]">
-    <p class="text-grey-dark text-small">04:01:56 / 07:00:53</p>
+    <p class="text-grey-dark text-small">{{ currentTimeWorking }} / 07:00:53</p>
     <Button :onClick="() => {}" type="neutral">Pausar</Button>
     <Button :onClick="clickOnClockOut" type="danger">Salir</Button>
     <p class="text-grey-light-1">|</p>
@@ -22,14 +22,32 @@ export default {
   components: {
     Button
   },
-
+  data () {
+    return {
+      currentSeconds: 0
+    }
+  },
   methods: {
     async clickOnClockOut () {
       await clockOut({ employeeId: this.worker.id })
     },
   },
   computed: {
-    ...mapState(['worker'])
+    ...mapState(['worker', 'timeWorker']),
+    currentTimeWorking () {
+      
+      const { hours, minutes, seconds } = this.timeWorker
+      
+      const newCurrentSeconds = seconds + this.currentSeconds
+      
+    
+      return `${hours}:${minutes}:${newCurrentSeconds}`
+    }
+  },
+  created() {
+    setInterval(() => {
+      this.currentSeconds = this.currentSeconds + 1 
+    }, 1000)
   }
 }
 </script>

@@ -1,6 +1,6 @@
 <template>
   <div class="bg-grey-light flex justify-around items-center w-[408px] p-[8px] rounded-[12px]">
-    <p class="text-grey-dark text-small">{{ timeWorkerOffline }}</p>
+    <p class="text-grey-dark text-small">{{ timeFormated }}</p>
     <Button type="primary" :onClick="clickOnClockIn">Entrar</Button>
     <p class="text-grey-light-1">|</p>
     <img src="../assets/avatar.png">
@@ -27,7 +27,11 @@ export default {
     }
   },
   computed: {
-    ...mapState(['worker', 'timeWorkerOffline'])
+    ...mapState(['worker', 'timeWorker']),
+    timeFormated () {
+      const { hours, minutes, seconds } = this.timeWorker
+      return `${hours}:${minutes}:${seconds}`
+    }
   },
 }
 </script>

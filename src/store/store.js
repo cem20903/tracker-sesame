@@ -13,15 +13,19 @@ const store = createStore({
         id: null,
         workStatus: null
       },
-      timeWorkerOffline: null
+      timeWorker: {
+        hours: null,
+        minutes: null,
+        seconds: null
+      }
     }
   },
   mutations: {
     setDataWorker(state, worker) {
       state.worker = worker
     },
-    setDifferenceTimes(state, timeWorkerOffline) {
-      state.timeWorkerOffline = timeWorkerOffline
+    setDifferenceTimes(state, timeWorker) {
+      state.timeWorker = timeWorker
     }
   },
   actions: {
@@ -31,10 +35,10 @@ const store = createStore({
     const { workEntryIn, workEntryOut } = response.data.data[0]
     const { firstName, lastName, id, workStatus } = response.data.data[0].employee
     
-    const timeWorkerOffline = calculateDifferenteBetweenTwoDates(new Date(workEntryIn.date), new Date(workEntryOut.date))
-    
+    const timeWorker = calculateDifferenteBetweenTwoDates(new Date(workEntryIn.date), new Date(workEntryOut.date))
+    console.log(workStatus, response.data.data[response.data.data.length - 1], 'INFO DEL USER')
     commit('setDataWorker', { firstName, lastName, id, workStatus })
-    commit('setDifferenceTimes', timeWorkerOffline)
+    commit('setDifferenceTimes', timeWorker)
   
   }
 }

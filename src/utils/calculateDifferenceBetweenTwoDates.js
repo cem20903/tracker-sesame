@@ -14,7 +14,6 @@ function calculateDifferenteBetweenTwoDates (dateIn, dateOut) {
   let differenceMinutes = minutesOut - minutesIn
   let differenceSeconds = secondsOut - secondsIn
 
-  console.log(differenceHours)
   differenceHours = differenceHours < 10
   ? `0${differenceHours}`
   :  `${differenceHours}`
@@ -27,10 +26,8 @@ function calculateDifferenteBetweenTwoDates (dateIn, dateOut) {
   ? `0${differenceSeconds}`
   : `${differenceSeconds}`
   
-
-  const difference = `${differenceHours}:${differenceMinutes }:${differenceSeconds}`
     
-  return difference
+  return { hours: differenceHours, minutes: differenceMinutes, seconds: differenceSeconds }
 }
 
 

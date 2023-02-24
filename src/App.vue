@@ -27,7 +27,7 @@ export default {
     ...mapActions(['getInitialWorkerInfo'])
   },
   created() {
-  this.getInitialWorkerInfo()
+    this.getInitialWorkerInfo()
   }
 }
 </script>
