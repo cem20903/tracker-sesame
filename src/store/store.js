@@ -29,7 +29,7 @@ const store = createStore({
     }
   },
   actions: {
-    async getInitialWorkerInfo ({ commit }) {
+    async getWorkerInfo ({ commit }) {
     const response = await getCurrentStatus()
 
     const { workEntryIn, workEntryOut } = response.data.data[0]

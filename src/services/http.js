@@ -10,7 +10,7 @@ const TOKEN = '16e2f0694a311151c01aa0a131b94a5a3ad7f110e12c2d8f459fcbb158214f5f'
 
 const axiosInsance = axios.create({
   baseURL: API,
-  timeout: 2000,
+  timeout: 4000,
   headers: { Authorization: `Bearer ${TOKEN}` }
 });
 

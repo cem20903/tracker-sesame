@@ -24,7 +24,9 @@ export default {
   },
   data () {
     return {
-      currentSeconds: 0
+      currentSeconds: 0,
+      currentMinutes: 0,
+      currentHours: 0
     }
   },
   methods: {
@@ -36,17 +38,53 @@ export default {
     ...mapState(['worker', 'timeWorker']),
     currentTimeWorking () {
       
-      const { hours, minutes, seconds } = this.timeWorker
-      
-      const newCurrentSeconds = seconds + this.currentSeconds
-      
+      let formatSeconds
+      let formatMinutes
+      let formatHours
     
-      return `${hours}:${minutes}:${newCurrentSeconds}`
+      if(this.currentSeconds < 10) {
+        formatSeconds = `0${this.currentSeconds}`
+      } else {
+        formatSeconds = this.currentSeconds
+      }
+      
+      if(this.currentMinutes < 10) {
+        formatMinutes = `0${this.currentMinutes}`
+      } else {
+        formatMinutes = this.currentMinutes
+      }
+      
+      if(this.currentHours < 10) {
+        formatHours = `0${this.currentHours}`
+      } else {
+        formatHours = this.currentHours
+      }
+      
+      
+      return `${formatHours}:${formatMinutes}:${formatSeconds}`
     }
   },
   created() {
+  
+    const { hours, minutes, seconds } = this.timeWorker
+    this.currentSeconds =  seconds
+    this.currentMinutes = minutes
+    this.currentHours = hours
+  
     setInterval(() => {
       this.currentSeconds = this.currentSeconds + 1 
+      
+      
+      if(this.currentSeconds === 60) {
+        this.currentSeconds = 0
+        this.currentMinutes = this.currentMinutes + 1
+      }
+      
+      if( this.currentMinutes === 60) {
+        this.currentMinutes = 0
+        this.currentHours = this.currentHours + 1
+      }
+      
     }, 1000)
   }
 }

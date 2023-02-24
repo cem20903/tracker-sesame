@@ -30,6 +30,18 @@ export default {
     ...mapState(['worker', 'timeWorker']),
     timeFormated () {
       const { hours, minutes, seconds } = this.timeWorker
+      
+  //       differenceHours = differenceHours < 10
+  // ? `0${differenceHours}`
+  // :  `${differenceHours}`
+
+  // differenceMinutes = differenceMinutes < 10
+  // ? `0${differenceMinutes}`
+  // : `${differenceMinutes}`
+
+  // differenceSeconds = differenceSeconds < 10
+  // ? `0${differenceSeconds}`
+  // : `${differenceSeconds}`
       return `${hours}:${minutes}:${seconds}`
     }
   },
