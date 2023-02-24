@@ -2,14 +2,17 @@
   <div>
   <div class="bg-grey-light flex justify-around items-center w-[596px] p-[8px] rounded-[12px] max-h-[45px]">
     <p class="text-grey-dark text-small">{{ currentTimeWorking }} / 07:00:53</p>
-    <Button :onClick="() => {}" type="neutral">Pausar</Button>
+    <Button :onClick="clickOnPause" type="neutral">Pausar</Button>
     <Button :onClick="clickOnClockOut" type="danger">Salir</Button>
     <p class="text-grey-light-1">|</p>
-    <img src="@/assets/avatar.png" class="avatar">
+    <div class="flex">
+      <img src="@/assets/avatar.png" class="mr-[-5px]" />
+      <img src="@/assets/elipse.svg" />
+    </div>
     <p class="text-medium text-grey-dark">{{ worker.firstName }} {{ worker.lastName }}</p>
-    <div @mouseover="showMenu = true" @mouseleave="showMenu = false">
-    <img src="@/assets/chevron-left.svg" class="icono" >
-    <slot v-if="showMenu" />
+    <div @mouseover="onMouseOver" @mouseleave="onMouseLeave">
+      <img src="@/assets/chevron-left.svg" class="cursor-pointer" />
+      <slot v-if="showMenu" />
     </div>
     </div>
   </div>
@@ -31,14 +34,19 @@ export default {
       currentSeconds: 0,
       currentMinutes: 0,
       currentHours: 0,
-      showMenu: false
+      showMenu: false,
+      intervalId: null,
+      timeoutMenu: null
     }
   },
   methods: {
     ...mapActions(['getWorkerInfo']),
     async clickOnClockOut () {
-      await clockOut({ employeeId: this.worker.id })
+      await clockOut({ employeeId: this.worker.id, workEntryOut: { coordinates: { latitude: 39.4697500, longitude: -0.3773900 } } })
       this.getWorkerInfo()
+    },
+    clickOnPause () {
+      clearInterval(this.intervalId)
     },
     startTimer () {
       const { hours, minutes, seconds } = this.timeWorker
@@ -61,8 +69,18 @@ export default {
         this.currentMinutes = 0
         this.currentHours = this.currentHours + 1
       }
-    }
+    },
+    onMouseOver () {
+      clearInterval(this.timeoutMenu)
+      this.showMenu = true
+    },
+    onMouseLeave () {
+      this.timeoutMenu = setTimeout(() => {
+        this.showMenu = false
+    }, 500)
   },
+  },
+
   computed: {
     ...mapState(['worker', 'timeWorker']),
     currentTimeWorking () {
@@ -72,7 +90,7 @@ export default {
   },
   created() {
     this.startTimer()
-    setInterval(this.calculateTime, 1000)
+    this.intervalId = setInterval(this.calculateTime, 1000)
   }
 }
 </script>

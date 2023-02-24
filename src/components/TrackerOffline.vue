@@ -5,8 +5,8 @@
     <p class="text-grey-light-1">|</p>
     <img src="@/assets/avatar.png">
     <p class="text-medium text-grey-dark">{{ worker.firstName }} {{ worker.lastName }}</p>
-    <div @mouseover="showMenu = true" @mouseleave="showMenu = false">
-      <img src="@/assets/chevron-left.svg" class="icono" >
+    <div @mouseover="onMouseOver" @mouseleave="onMouseLeave">
+      <img src="@/assets/chevron-left.svg" class="cursor-pointer" >
       <slot v-if="showMenu" />
     </div>
   </div>
@@ -24,15 +24,25 @@ export default {
   },
   data () {
     return {
-      showMenu: false
+      showMenu: false,
+      timeoutMenu: null
     }
   },
   methods: {
    ...mapActions(['getWorkerInfo']),
     async clickOnClockIn () {  
-      await clockIn({ employeeId: this.worker.id }) 
+      await clockIn({ employeeId: this.worker.id, workEntryIn: { coordinates: { latitude: 39.4697500, longitude: -0.3773900 } } }) 
       this.getWorkerInfo()
-    }
+    },
+    onMouseOver () {
+      clearInterval(this.timeoutMenu)
+      this.showMenu = true
+    },
+    onMouseLeave () {
+      this.timeoutMenu = setTimeout(() => {
+        this.showMenu = false
+      }, 500)
+    },
   },
   computed: {
     ...mapState(['worker', 'timeWorkerWithFormat'])
