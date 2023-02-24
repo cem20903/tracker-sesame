@@ -1,14 +1,17 @@
 <template>
   <div>
-  <div class="bg-grey-light flex justify-around items-center w-[596px] p-[8px] rounded-[12px]">
+  <div class="bg-grey-light flex justify-around items-center w-[596px] p-[8px] rounded-[12px] max-h-[45px]">
     <p class="text-grey-dark text-small">{{ currentTimeWorking }} / 07:00:53</p>
     <Button :onClick="() => {}" type="neutral">Pausar</Button>
     <Button :onClick="clickOnClockOut" type="danger">Salir</Button>
     <p class="text-grey-light-1">|</p>
-    <img src="../assets/avatar.png">
+    <img src="../assets/avatar.png" class="avatar">
     <p class="text-medium text-grey-dark">{{ worker.firstName }} {{ worker.lastName }}</p>
-    <img src="../assets/chevron-left.svg" >
-  </div>
+    <div @mouseover="showMenu = true" @mouseleave="showMenu = false">
+    <img src="../assets/chevron-left.svg" class="icono" >
+    <slot v-if="showMenu" />
+    </div>
+    </div>
   </div>
 </template>
 <script>
@@ -27,7 +30,8 @@ export default {
     return {
       currentSeconds: 0,
       currentMinutes: 0,
-      currentHours: 0
+      currentHours: 0,
+      showMenu: false
     }
   },
   methods: {
@@ -36,6 +40,10 @@ export default {
       await clockOut({ employeeId: this.worker.id })
       this.getWorkerInfo()
     },
+    prueba () {
+      console.log('Salgo')
+      this.showMenu = false
+    }
   },
   computed: {
     ...mapState(['worker', 'timeWorker']),

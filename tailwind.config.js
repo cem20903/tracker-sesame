@@ -9,7 +9,8 @@ module.exports = {
     'grey-light-1': '#B5B5B5',
     'grey-dark': '#3F3F3F',
     'salmon': '#FF9984',
-    'white': '#FFFFFF'
+    'white': '#FFFFFF',
+    'hover-blue': '#D8F2EC'
     },
     fontSize: {
       'small': '12px',
