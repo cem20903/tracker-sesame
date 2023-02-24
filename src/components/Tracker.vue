@@ -17,8 +17,8 @@
 
 <script>
 
-import Button from './Button.vue'
-import { getCurrentStatus } from '../services/API'
+import Button from '@/components/Button.vue'
+import { getCurrentStatus } from '@/services/API'
 
 export default {
   name: 'Tracker-Personal',

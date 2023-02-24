@@ -5,10 +5,10 @@
     <Button :onClick="() => {}" type="neutral">Pausar</Button>
     <Button :onClick="clickOnClockOut" type="danger">Salir</Button>
     <p class="text-grey-light-1">|</p>
-    <img src="../assets/avatar.png" class="avatar">
+    <img src="@/assets/avatar.png" class="avatar">
     <p class="text-medium text-grey-dark">{{ worker.firstName }} {{ worker.lastName }}</p>
     <div @mouseover="showMenu = true" @mouseleave="showMenu = false">
-    <img src="../assets/chevron-left.svg" class="icono" >
+    <img src="@/assets/chevron-left.svg" class="icono" >
     <slot v-if="showMenu" />
     </div>
     </div>
@@ -16,10 +16,10 @@
 </template>
 <script>
 
-import Button from './Button.vue'
-import { clockOut } from '../services/API'
+import Button from '@/components/Button.vue'
+import { clockOut } from '@/services/API'
 import { mapState, mapActions } from 'vuex'
-import { formatTime } from '../utils/calculateDifferenceBetweenTwoDates'
+import { formatTime } from '@/utils/calculateDifferenceBetweenTwoDates'
 
 export default {
   name: 'Tracker-Online',

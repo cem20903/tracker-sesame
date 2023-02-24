@@ -3,7 +3,7 @@
     <ul class="bg-white text-grey-dark w-[247px] cursor-pointer">
     <div @mouseover="showSubMenu = true" @mouseleave="showSubMenu = false" class="max-h-[45px]">
       <li class="h-[45px] flex items-center justify-center">
-        <img src="../assets/chevron-down.svg" class="relative right-[60px]">
+        <img src="@/assets/chevron-down.svg" class="relative right-[60px]">
         <span>Mis cuentas</span>
       </li>
         <sub-menu v-if="showSubMenu" />
@@ -17,7 +17,7 @@
 
 
 <script>
-import SubMenu from './SubMenu.vue'
+import SubMenu from '@/components/SubMenu.vue'
 export default {
   name: 'menu-navigation',
     components: { 
