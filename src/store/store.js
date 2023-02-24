@@ -1,7 +1,7 @@
 
 import { createStore } from 'vuex'
 
-import { calculateDifferenteBetweenTwoDates, calculateTimeWorkerWithFormat } from '@/utils/calculateDifferenceBetweenTwoDates'
+import { calculateDifferenteBetweenTwoDates, formatTime } from '@/utils/calculateDifferenceBetweenTwoDates'
 import { getCurrentStatus } from '../services/API'
 
 const store = createStore({
@@ -40,12 +40,12 @@ const store = createStore({
     const { firstName, lastName, id, workStatus } = response.data.data[0].employee
     
     const timeWorker = calculateDifferenteBetweenTwoDates(new Date(workEntryIn.date), new Date(workEntryOut.date))
-    const timeWorkerWithFormat = calculateTimeWorkerWithFormat(new Date(workEntryIn.date), new Date(workEntryOut.date))
+    const timeWithFormat = formatTime(timeWorker)
 
     commit('setDataWorker', { firstName, lastName, id, workStatus })    
     commit('setDifferenceTimes', timeWorker)
-    commit('setTimeWorkerWithFormat', timeWorkerWithFormat)
-  
+    commit('setTimeWorkerWithFormat', timeWithFormat)
+    
   }
 }
 })
