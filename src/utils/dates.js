@@ -16,7 +16,7 @@ function calculateDifferenteBetweenTwoDates (dateIn, dateOut) {
   return { hours: differenceHours, minutes: differenceMinutes, seconds: differenceSeconds }
 }
 
-function formatEachTime (time) {
+function addZeroToTime (time) {
   return time < 10
   ? `0${time}`
   :  `${time}`
@@ -24,9 +24,9 @@ function formatEachTime (time) {
 
 function formatTime ({ hours, minutes, seconds}) {
 
-  const hoursFormated = formatEachTime(hours)
-  const minutesFormated = formatEachTime(minutes)
-  const secondsFormated = formatEachTime(seconds)
+  const hoursFormated = addZeroToTime(hours)
+  const minutesFormated = addZeroToTime(minutes)
+  const secondsFormated = addZeroToTime(seconds)
   
   return `${hoursFormated}:${minutesFormated}:${secondsFormated}`
 }

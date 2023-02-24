@@ -1,7 +1,7 @@
 <template>
   <button 
     class="rounded-[12px] px-[38px] text-white text-small w-[110px] h-[27px] box-border"
-    :class="{ 'bg-green': type === 'primary', 'bg-salmon': type === 'danger', 'bg-grey-light-1': type === 'neutral' }"
+    :class="buttonClasses[type]"
     @click="onClick"
   >
     <slot />
@@ -19,6 +19,16 @@ export default {
     type: Function,
     required: true
   }
- }
+ },
+  data () {
+    return {
+      buttonClasses: {
+        primary: 'bg-green',
+        danger: 'bg-salmon',
+        neutral: 'bg-grey-light-1'
+      }
+    }
+  },
 }
+
 </script>

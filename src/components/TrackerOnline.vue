@@ -19,7 +19,7 @@
 import Button from '@/components/Button.vue'
 import { clockOut } from '@/services/API'
 import { mapState, mapActions } from 'vuex'
-import { formatTime } from '@/utils/calculateDifferenceBetweenTwoDates'
+import { formatTime } from '@/utils/dates'
 
 export default {
   name: 'Tracker-Online',
@@ -40,9 +40,27 @@ export default {
       await clockOut({ employeeId: this.worker.id })
       this.getWorkerInfo()
     },
-    prueba () {
-      console.log('Salgo')
-      this.showMenu = false
+    startTimer () {
+      const { hours, minutes, seconds } = this.timeWorker
+      this.currentSeconds =  seconds
+      this.currentMinutes = minutes
+      this.currentHours = hours
+    },
+    calculateTime () {
+      this.currentSeconds = this.currentSeconds + 1 
+  
+      const addMinute = this.currentSeconds === 60
+      
+      if(addMinute) {
+        this.currentSeconds = 0
+        this.currentMinutes = this.currentMinutes + 1
+      }
+      
+      const addHour = this.currentMinutes === 60
+      if(addHour) {
+        this.currentMinutes = 0
+        this.currentHours = this.currentHours + 1
+      }
     }
   },
   computed: {
@@ -53,27 +71,8 @@ export default {
     }
   },
   created() {
-  
-    const { hours, minutes, seconds } = this.timeWorker
-    this.currentSeconds =  seconds
-    this.currentMinutes = minutes
-    this.currentHours = hours
-  
-    setInterval(() => {
-      this.currentSeconds = this.currentSeconds + 1 
-      
-      
-      if(this.currentSeconds === 60) {
-        this.currentSeconds = 0
-        this.currentMinutes = this.currentMinutes + 1
-      }
-      
-      if( this.currentMinutes === 60) {
-        this.currentMinutes = 0
-        this.currentHours = this.currentHours + 1
-      }
-      
-    }, 1000)
+    this.startTimer()
+    setInterval(this.calculateTime, 1000)
   }
 }
 </script>

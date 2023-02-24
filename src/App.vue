@@ -1,7 +1,10 @@
 <template>
   <div id="app" class="bg-grey-extra-light h-screen flex items-center justify-center flex-col gap-[20px]">     
-    <TrackerOnline v-if="worker.workStatus === 'online'"><Menu /></TrackerOnline>
-    <TrackerOffline v-if="worker.workStatus === 'offline'"><Menu /></TrackerOffline> 
+    <img src="@/assets/spinner.svg" v-if="worker.workStatus === null" />
+    <template v-else>
+      <TrackerOnline v-if="worker.workStatus === 'online'"><Menu /></TrackerOnline>
+      <TrackerOffline v-if="worker.workStatus === 'offline'"><Menu /></TrackerOffline> 
+    </template>
   </div>
 </template>
 

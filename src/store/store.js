@@ -1,7 +1,7 @@
 
 import { createStore } from 'vuex'
 
-import { calculateDifferenteBetweenTwoDates, formatTime } from '@/utils/calculateDifferenceBetweenTwoDates'
+import { calculateDifferenteBetweenTwoDates, formatTime } from '@/utils/dates'
 import { getCurrentStatus } from '@/services/API'
 
 const store = createStore({
