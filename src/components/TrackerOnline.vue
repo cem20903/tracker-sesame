@@ -6,36 +6,30 @@
     <Button :onClick="clickOnClockOut" type="danger">Salir</Button>
     <p class="text-grey-light-1">|</p>
     <img src="../assets/avatar.png">
-    <p class="text-medium text-grey-dark">Kelly pierce</p>
+    <p class="text-medium text-grey-dark">{{ worker.firstName }} {{ worker.lastName }}</p>
     <img src="../assets/chevron-left.svg" >
   </div>
-
   </div>
 </template>
-
 <script>
 
 import Button from './Button.vue'
 import { clockOut } from '../services/API'
+import { mapState } from 'vuex'
 
 export default {
   name: 'Tracker-Online',
   components: {
     Button
   },
-  data() {
-    return {
-    }
-  },
+
   methods: {
     async clickOnClockOut () {
-      await clockOut({ employeeId: 'b99a6cd9-3a3d-4635-9eea-e089c90ac45a'})
+      await clockOut({ employeeId: this.worker.id })
     },
-
+  },
+  computed: {
+    ...mapState(['worker'])
   }
 }
 </script>
-
-
-<style scoped>
-</style>
