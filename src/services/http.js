@@ -21,8 +21,15 @@ async function get (url = '') {
   .then(response => response)  
 }
 
+async function post(url, params) {
+  return axiosInsance
+  .post(url, params)
+  .then(response => response)
+}
+
 const http = {
-  get: get
+  get,
+  post
 }
 
 
