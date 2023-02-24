@@ -1,8 +1,7 @@
 <template>
   <div id="app" class="bg-grey-extra-light h-screen flex items-center justify-center flex-col gap-[20px]">     
     <TrackerOnline v-if="worker.workStatus === 'online'"><Menu /></TrackerOnline>
-    <TrackerOffline v-if="worker.workStatus === 'offline'" />
-    
+    <TrackerOffline v-if="worker.workStatus === 'offline'"><Menu /></TrackerOffline> 
   </div>
 </template>
 

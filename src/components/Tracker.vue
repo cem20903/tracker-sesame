@@ -27,7 +27,7 @@ export default {
   },
   data() {
     return {
-       workStatus: ''
+      workStatus: ''
     }
   },
   async created() {

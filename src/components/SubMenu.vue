@@ -16,12 +16,3 @@
     </li>
   </ul>
 </template>
-
-<script>
-export default {
-
-}
-</script>
-<style>
-/* relative right-[255px] top-[45px] */
-</style>

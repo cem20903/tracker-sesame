@@ -5,7 +5,10 @@
     <p class="text-grey-light-1">|</p>
     <img src="../assets/avatar.png">
     <p class="text-medium text-grey-dark">{{ worker.firstName }} {{ worker.lastName }}</p>
-    <img src="../assets/chevron-left.svg" >
+    <div @mouseover="showMenu = true" @mouseleave="showMenu = false">
+      <img src="../assets/chevron-left.svg" class="icono" >
+      <slot v-if="showMenu" />
+    </div>
   </div>
 </template>
 
@@ -21,13 +24,17 @@ export default {
   components: {
     Button
   },
+  data () {
+    return {
+      showMenu: false
+    }
+  },
   methods: {
    ...mapActions(['getWorkerInfo']),
     async clickOnClockIn () {  
       await clockIn({ employeeId: this.worker.id }) 
       this.getWorkerInfo()
     }
-    
   },
   computed: {
     ...mapState(['worker', 'timeWorkerWithFormat'])
