@@ -1,10 +1,10 @@
 
 function calculateDifferenteBetweenTwoDates (dateIn, dateOut) {
   
-  var seconds = Math.floor((dateOut - (dateIn))/1000)
-  var minutes = Math.floor(seconds/60)
-  var hours = Math.floor(minutes/60)
-  var days = Math.floor(hours/24)
+  let seconds = Math.floor((dateOut - (dateIn))/1000)
+  let minutes = Math.floor(seconds/60)
+  let hours = Math.floor(minutes/60)
+  let days = Math.floor(hours/24)
   
   hours = hours - (days * 24)
   minutes = minutes - (days * 24 * 60) - (hours * 60)
