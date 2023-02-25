@@ -17,7 +17,7 @@
 
 
 <script>
-import SubMenu from '@/components/SubMenu.vue'
+import SubMenu from '@/components/Menu/SubMenu.vue'
 export default {
   name: 'menu-navigation',
     components: { 
@@ -30,14 +30,3 @@ export default {
   }
 }
 </script>
-
-<style scoped>
-
-.prueba {
-/* position: absolute;
-    right: 60px;
-    margin-top: 20px; */
-}
-
-
-</style>

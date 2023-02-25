@@ -7,7 +7,7 @@ describe('Format time', () => {
   
     const response = formatTime({ hours: 1, minutes: 20, seconds: 3 }) 
     expect(response).toEqual('01:20:03')
-  
+   
   })
 })
 
@@ -22,3 +22,4 @@ describe('calculateDifferenteBetweenTwoDates', () => {
   
     })
   })
+ 

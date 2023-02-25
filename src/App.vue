@@ -14,7 +14,7 @@ import TrackerOnline from '@/components/TrackerOnline.vue'
 import TrackerOffline from '@/components/TrackerOffline.vue'
 import { mapActions, mapState } from 'vuex'
 
-import Menu from './components/Menu.vue'
+import Menu from './components/Menu/Menu.vue'
 
 export default {
   name: 'App',
