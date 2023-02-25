@@ -8,8 +8,9 @@ import mockAxios from 'axios'
 describe('Tracker', () => {
   
   it('should call the correct endpoint when the user is online and click on Salir', async () => {
-    mockAxios.get.mockImplementationOnce(() => Promise.resolve(workerOnlineResponse))
-    
+    mockAxios.get.mockImplementation(() => Promise.resolve(workerOnlineResponse))
+    mockAxios.post.mockImplementationOnce(() => Promise.resolve({}))
+   
     const { findByRole } = render(App, { global: {
       plugins: [store]
     }})
@@ -22,7 +23,8 @@ describe('Tracker', () => {
   })
   
   it('should call the correct endpoint when the user is offline and click on Entrar', async () => {
-    mockAxios.get.mockImplementationOnce(() => Promise.resolve(workerOfflineResponse))
+    mockAxios.get.mockImplementation(() => Promise.resolve(workerOfflineResponse))
+    mockAxios.post.mockImplementationOnce(() => Promise.resolve({}))
     
     const { findByRole } = render(App, { global: {
       plugins: [store]

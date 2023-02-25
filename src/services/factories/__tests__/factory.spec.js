@@ -1,5 +1,5 @@
 
-import { workerOnlineResponse } from "@/components/__tests__/workStatus.mock";
+import { workerOnlineResponse } from "@/__mocks__/workStatus";
 
 import { getStatusWorker } from "../factory";
 
