@@ -1,7 +1,11 @@
 import http from './http'
 
+import { getStatusWorker } from '@/services/factories/factory'
+
 async function getCurrentStatus () {
-  return http.get().then(res => res)
+  return http.get().then(res => {
+    return getStatusWorker(res)
+  })
 }
 
 async function clockIn (params) {

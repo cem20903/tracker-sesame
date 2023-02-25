@@ -36,8 +36,8 @@ const store = createStore({
     async getWorkerInfo ({ commit }) {
     const response = await getCurrentStatus()
 
-    const { workEntryIn, workEntryOut } = response.data.data[0]
-    const { firstName, lastName, id, workStatus } = response.data.data[0].employee
+    const { workEntryIn, workEntryOut } = response
+    const { firstName, lastName, id, workStatus } = response.employee
     
     const timeWorker = calculateDifferenteBetweenTwoDates(new Date(workEntryIn.date), new Date(workEntryOut.date))
     const timeWithFormat = formatTime(timeWorker)
