@@ -17,6 +17,6 @@ describe('calculateDifferenteBetweenTwoDates', () => {
     const response = calculateDifferenteBetweenTwoDates(firstDate, secondDate) 
     
     expect(response).toEqual({ hours: 0, minutes: 59, seconds: 50})
-    })
   })
+})
  

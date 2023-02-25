@@ -6,7 +6,6 @@ import store from '@/store/store'
 import mockAxios from 'axios'
 
 describe('Tracker', () => {
-  
   it('should call the correct endpoint when the user is online and click on Salir', async () => {
     mockAxios.get.mockImplementation(() => Promise.resolve(workerOnlineResponse))
     mockAxios.post.mockImplementationOnce(() => Promise.resolve({}))
