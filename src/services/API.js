@@ -1,5 +1,4 @@
 import http from './http'
-
 import { getStatusWorker } from '@/services/factories/factory'
 
 async function getCurrentStatus () {

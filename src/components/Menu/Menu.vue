@@ -15,7 +15,6 @@
   </div>
 </template>
 
-
 <script>
 import SubMenu from '@/components/Menu/SubMenu.vue'
 export default {
