@@ -1,6 +1,9 @@
 
 function calculateDifferenteBetweenTwoDates (dateIn, dateOut) {
 
+
+
+
   const hoursIn = dateIn.getHours()
   const minutesIn = dateIn.getMinutes()
   const secondsIn = dateIn.getSeconds()
