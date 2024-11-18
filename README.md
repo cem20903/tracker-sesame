@@ -1,5 +1,7 @@
 # Tracker Sesame
 
+En la carpeta mockups estan los diseños que facilitaron para la prueba.
+
 ## Comentarios sobre el codigo:
 
 - No lo he estructurado con Views porque realmente no tenemos mas vistas que la principal.
